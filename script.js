@@ -1,4 +1,27 @@
 // Your Script here.
+function rot13(str) {
+  let decoded = '';
+
+  for (let i = 0; i < str.length; i++) {
+    const charCode = str.charCodeAt(i);
+
+    if (charCode >= 65 && charCode <= 90) {  // Check if the character is a letter
+      let decodedCharCode = charCode - 13;
+
+      if (decodedCharCode < 65) {
+        // Wrap around to the end of the alphabet
+        decodedCharCode = 91 - (65 - decodedCharCode);
+      }
+
+      decoded += String.fromCharCode(decodedCharCode);
+    } else {
+      // Non-alphabetic character, pass it on
+      decoded += str[i];
+    }
+  }
+
+  return decoded;
+}
 
 const lookup = {
   A: "N",
